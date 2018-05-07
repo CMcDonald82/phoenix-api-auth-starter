@@ -15,11 +15,29 @@ use Mix.Config
 # which you typically run after static files are built.
 config :phoenix_api_auth_starter, PhoenixApiAuthStarterWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  http: [port: {:system, "PORT"}],
+  url: [host: "${DOMAIN_NAME}", port: {:system, "PORT"}],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base: "${SECRET_KEY_BASE}",
+  server: true,
+  root: ".",
+  code_reloader: false,
+  version: Application.spec(:phoenix_api_auth_starter, :vsn)
 
 # Do not print debug messages in production
 config :logger, level: :info
+
+# Environment config
+config :phoenix_api_starter, :environment, :prod
+
+# Configure your database
+config :phoenix_api_auth_starter, PhoenixApiAuthStarter.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "${DB_USERNAME}",
+  password: "${DB_PASSWORD}",
+  hostname: "${DB_HOSTNAME}",
+  database: "${DB_NAME}",
+  pool_size: 15
 
 # ## SSL Support
 #
@@ -50,15 +68,12 @@ config :logger, level: :info
 #
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
-#
-#     config :phoenix, :serve_endpoints, true
-#
+
+config :phoenix, :serve_endpoints, true
+
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
 #
 #     config :phoenix_api_auth_starter, PhoenixApiAuthStarterWeb.Endpoint, server: true
 #
 
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
