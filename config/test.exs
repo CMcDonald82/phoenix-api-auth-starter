@@ -15,5 +15,5 @@ config :phoenix_api_auth_starter, PhoenixApiAuthStarter.Repo,
   username: "postgres",
   password: "postgres",
   database: "phoenix_api_auth_starter_test",
-  hostname: "localhost",
+  hostname: "postgres",
   pool: Ecto.Adapters.SQL.Sandbox
