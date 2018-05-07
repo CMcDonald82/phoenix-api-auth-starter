@@ -42,5 +42,7 @@ config :phoenix_api_auth_starter, PhoenixApiAuthStarter.Repo,
   username: "postgres",
   password: "postgres",
   database: "phoenix_api_auth_starter_dev",
-  hostname: "localhost",
+  hostname: "postgres",
   pool_size: 10
+
+import_config "setup.exs"
