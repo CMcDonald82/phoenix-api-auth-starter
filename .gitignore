@@ -3,6 +3,7 @@
 /db
 /deps
 /*.ez
+*.map
 
 # Generated on crash by the VM
 erl_crash.dump
@@ -14,3 +15,15 @@ erl_crash.dump
 # secrets files as long as you replace their contents by environment
 # variables.
 /config/*.secret.exs
+
+# SSH key (public)
+/ssh_key.pub
+
+# Edeliver releases
+/.deliver/releases
+
+# Erlang node cookie
+.erlang_cookie
+
+# .env file for setting local environment variables
+.env
