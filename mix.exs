@@ -39,6 +39,7 @@ defmodule PhoenixApiAuthStarter.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
+      {:rename, "~> 0.1.0"},
       {:edeliver, "~> 1.5.0"},
       {:distillery, "~> 1.5"}
     ]
